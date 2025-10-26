@@ -1,0 +1,22 @@
+###colours code
+# "#303633" -> onxy -> bg
+# "#78C3FB" -> maya blue -> button active + onxy as text
+# "#7FB069" -> Asparagus -> (text other than button) + seprators
+# "#CCF5AC" -> tea green -> text on button
+# "#0E5CFF" -> default blue (RISD blue) -> buttons default
+# "#06d6a0" -> strong cyan type -> texts others (can use)
+# "#b0cac7" -> jungle mist -> text others (can use)
+
+### font
+Times new roman
+Garamond
+Arial
+cristone (external)
+january night (external)
+
+# for now 
+daily diary , to-do
+
+
+#To add
+idk
