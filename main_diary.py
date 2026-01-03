@@ -8,6 +8,30 @@ from tkinter import messagebox
 from tkextrafont import Font
 import tkextrafont
 
+_january_font = None
+
+def get_january_font():
+    global _january_font
+    if _january_font is None:
+        _january_font = Font(
+            file="fonts\\January Night.ttf",
+            family="January Night",
+            size=15
+        )
+    return _january_font
+
+_abasalom = None
+
+def get_abasalom_font():
+    global _abasalom
+    if _abasalom is None:
+        _abasalom = Font(file="fonts\\new\\Abasalomdemo-ax8Am.otf" )
+    return _abasalom
+
+
+
+
+
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
@@ -144,20 +168,17 @@ def main():
     calendar_frame.place(x = 10,y = 10)
 
 
-    font_textarea = Font(file="fonts\\January Night.ttf", family="January Night", size=15)
-    font_temp_1 = Font(file="fonts\\new\\Abasalomdemo-ax8Am.otf" )
+    font_textarea = get_january_font()
+    font_temp_1 = get_abasalom_font()
     family1 ="Abasalom Demo"
     font_month = ctk.CTkFont(family=family1 , size = 30 , weight="bold" , underline=True)
     font_week = ctk.CTkFont(family=family1 , size = 15 , underline=True)
     font_date = ctk.CTkFont(family=family1 , size = 20 ,slant="italic")
 
-
-
-    
-    text_area = scrolledtext.ScrolledText(root, wrap=ctk.WORD, width=90, height=29, bg="#2E2E2E", fg="#7FB069", font=font_textarea, spacing1=10, spacing2=5, spacing3=10)
+    text_area = scrolledtext.ScrolledText(root, wrap=ctk.WORD, width=97, height=14, bg="#2E2E2E", fg="#7FB069", font=font_textarea, spacing1=10, spacing2=5, spacing3=10)
     text_area.place(x = 298 , y = 30)
 
-    date_label = ctk.CTkLabel(root, text=f"Writing for: {selected_date.strftime('%Y-%m-%d')}", font=font_date, text_color="#b0cac7")
+    date_label = ctk.CTkLabel(root, text=f"Writing for: {selected_date.strftime('%d-%m-%y')}", font=font_date, text_color="#b0cac7")
     date_label.place(x = 300 , y = 0)
 
     save_button = ctk.CTkButton(root, text="Save", command=lambda: save_entry(text_area))

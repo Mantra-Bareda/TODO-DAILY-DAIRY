@@ -116,5 +116,3 @@ def decrypt(en):
         else:
            text+=str(w_final[i])
     return text
-
-
