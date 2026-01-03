@@ -60,7 +60,7 @@ def make_backup():
 
     shutil.make_archive(zip_file_path, 'zip', folder_path)
 
-    Label_backup_done.place(x = 200 , y = 200)    
+    Label_backup_done.place(x = 250 , y = 200)    
 
 def select_folder():
     root = tk.Tk()
