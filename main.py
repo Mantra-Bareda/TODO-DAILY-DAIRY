@@ -68,7 +68,7 @@ def select_folder():
     folder_selected = filedialog.askdirectory(initialdir="G:/My Drive/backup/mantra/some text file and extra/text/personal")
     return folder_selected
 
-def add_hover_effects(button, hover_color="#78C3FB", normal_color="#0E5CFF" , Text_colour_hover = "#303633" , normal_text = "#CCF5AC"):
+def add_hover_effects(button, hover_color="#78C3FB", normal_color="#1F538D" , Text_colour_hover = "#303633" , normal_text = "#CCF5AC"):
     def on_hover(event):
         button.configure(fg_color=hover_color , text_color= Text_colour_hover)
 
