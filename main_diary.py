@@ -3,10 +3,7 @@ import customtkinter as ctk
 from tkinter import scrolledtext
 import calendar
 from datetime import datetime
-import encrypter as enc
-from tkinter import messagebox
 from tkextrafont import Font
-import tkextrafont
 
 _january_font = None
 
@@ -27,11 +24,6 @@ def get_abasalom_font():
     if _abasalom is None:
         _abasalom = Font(file="fonts\\new\\Abasalomdemo-ax8Am.otf" )
     return _abasalom
-
-
-
-
-
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
