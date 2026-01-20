@@ -40,6 +40,17 @@ def add_hover_effects(button, hover_color="#78C3FB", normal_color="#1F538D",
     button.bind("<Enter>", on_hover)
     button.bind("<Leave>", on_leave)
 
+def add_hover_effects_new(button, hover_color="#FFD6A5", normal_color="#E8F0FE", 
+                          Text_colour_hover="#3A2E1F", normal_text="#2A2F45"):
+    def on_hover(event):
+        button.configure(fg_color=hover_color, text_color=Text_colour_hover)
+
+    def on_leave(event):
+        button.configure(fg_color=normal_color, text_color=normal_text)
+
+    button.bind("<Enter>", on_hover)
+    button.bind("<Leave>", on_leave)
+
 def ency(s):
     return "".join(chr(ord(i) + 4) for i in s)
 
@@ -85,18 +96,14 @@ def create_calendar(root, calendar_frame, text_area, date_label, year, month):
     for week_num, week in enumerate(cal):
         for day_num, day in enumerate(week):
             if day != 0:
-                btn = ctk.CTkButton(
-                    calendar_frame,
-                    text=str(day),
-                    width=30,
-                    height=30,
-                    font=("Times New Roman", 16, "bold"),
-                    fg_color="#0E5CFF",
-                    text_color="#CCF5AC",
-                    command=lambda d=day, y=year, m=month:
-                        on_date_click(root, calendar_frame, text_area, date_label, d, y, m)
-                )
-                add_hover_effects(btn)
+                btn = ctk.CTkButton(calendar_frame,text=str(day),width=30,height=30,font=("Times New Roman", 16, "bold"),fg_color="#0E5CFF",text_color="#CCF5AC",command=lambda d=day, y=year, m=month:
+                        on_date_click(root, calendar_frame, text_area, date_label, d, y, m))
+                
+                if(check_file_exist_or_not(day,year,month)):
+                    btn.configure(fg_color = "#E8F0FE",text_color="#2A2F45")
+                    add_hover_effects_new(btn)
+                else:add_hover_effects(btn)
+
                 btn.grid(row=week_num + 2, column=day_num, padx=5, pady=5)
 
                 if (day == selected_date.day and
@@ -122,6 +129,11 @@ def on_date_click(root, calendar_frame, text_area, date_label, day, year, month)
     date_label.configure(text=f"Writing for: {selected_date.strftime('%Y-%m-%d')}")
     create_calendar(root, calendar_frame, text_area, date_label, year, month)
     load_entry(text_area)
+
+def check_file_exist_or_not(day , year , month):
+    date_local_var = datetime(year , month , day)
+    if os.path.exists(os.path.join(DIARY_DIR, date_local_var.strftime("%Y-%m-%d.txt"))):return True
+    else:return False
 
 
 def load_entry(text_area):

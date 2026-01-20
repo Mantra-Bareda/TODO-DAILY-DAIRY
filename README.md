@@ -9,6 +9,7 @@ A simple Python-based dairy and todo manager.
 - Can Create Multiple To-Do Lists
 - Save all Data in encrypted form
 - Password Protected
+- Can Create Backup and restore it
 
 ## How to run
 python main.py
